@@ -1,6 +1,7 @@
 #!/bin/bash
 
 PROFILES_ROOT=$(git rev-parse --show-toplevel) || exit
+echo $PROFILES_ROOT
 OVERRIDE=true
 [[ ! -z $2 && $2 = F ]] && OVERRIDE=true
 VERBOSE=true
@@ -45,7 +46,7 @@ function link() {
 
 function source_config() {
   config=$1
-  SRC_DIR=$DOTFILES_ROOT/$(dirname $config)
+  SRC_DIR=$PROFILES_ROOT/$(dirname $config)
   [[ $VERBOSE = true ]] && echo running $SRC_DIR
   source ${config}
   [[ $VERBOSE = true ]] && echo
