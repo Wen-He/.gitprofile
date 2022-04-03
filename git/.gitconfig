@@ -1,12 +1,14 @@
 [user]
-	name = Wen He
-	email = hewen9712@gmail.com
+	name = arwinhe
+	email = arwinhe@tencent.com
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore_global
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = "pre=$(which diff-so-fancy); ${pre:-cat} | less --tabs=4 -RFX"
+	quotepath = false
 [alias]
-	save = "!f() { git add . && git commit -m\"save\"; }; f"
+	update = "!f() { git add . && git commit -m\"update\"; }; f"
+	squash-all = "!f(){ git reset $(git commit-tree HEAD^{tree} -m \"${1:-A new start}\");};f"
 [push]
 	default = simple
 [color]
